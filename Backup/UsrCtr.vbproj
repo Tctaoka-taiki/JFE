@@ -1,0 +1,261 @@
+<VisualStudioProject>
+    <VisualBasic
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{345585E6-0F21-4035-BCDD-AC8DE3CCFEE1}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "UsrCtr"
+                AssemblyOriginatorKeyFile = ""
+                AssemblyOriginatorKeyMode = "None"
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                OptionCompare = "Binary"
+                OptionExplicit = "On"
+                OptionStrict = "On"
+                RootNamespace = "UsrCtr"
+                StartupObject = "UsrCtr.(‚È‚µ)"
+            >
+                <Config
+                    Name = "Debug"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "true"
+                    DefineTrace = "true"
+                    DebugSymbols = "true"
+                    IncrementalBuild = "true"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "1"
+                />
+                <Config
+                    Name = "Release"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "false"
+                    DefineTrace = "true"
+                    DebugSymbols = "false"
+                    IncrementalBuild = "true"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "1"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                />
+                <Reference
+                    Name = "System.Design"
+                    AssemblyName = "System.Design"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.0.3705\System.Design.dll"
+                />
+                <Reference
+                    Name = "C1.Common"
+                    AssemblyName = "C1.Common"
+                    HintPath = "C:\Program Files\FlexGridNETwin\Bin\C1.Common.dll"
+                    AssemblyFolderKey = "hklm\c1flexgridnet"
+                    Private = "False"
+                />
+                <Reference
+                    Name = "C1.Win.C1FlexGrid"
+                    AssemblyName = "C1.Win.C1FlexGrid"
+                    HintPath = "C:\Program Files\FlexGridNETwin\Bin\C1.Win.C1FlexGrid.dll"
+                    AssemblyFolderKey = "hklm\c1flexgridnet"
+                    Private = "False"
+                />
+            </References>
+            <Imports>
+                <Import Namespace = "Microsoft.VisualBasic" />
+                <Import Namespace = "System" />
+                <Import Namespace = "System.Collections" />
+                <Import Namespace = "System.Data" />
+                <Import Namespace = "System.Drawing" />
+                <Import Namespace = "System.Diagnostics" />
+                <Import Namespace = "System.Windows.Forms" />
+            </Imports>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrBtn.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrBtn.resx"
+                    DependentUpon = "UsrBtn.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrChk.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrChk.resx"
+                    DependentUpon = "UsrChk.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrCmb.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrCmb.resx"
+                    DependentUpon = "UsrCmb.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrDate.vb"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrDate.resx"
+                    DependentUpon = "UsrDate.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrFlx.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrFlx.resx"
+                    DependentUpon = "UsrFlx.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrGro.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrGro.resx"
+                    DependentUpon = "UsrGro.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrLbl.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrLbl.resx"
+                    DependentUpon = "UsrLbl.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrMnuitem.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrMnuitem.resx"
+                    DependentUpon = "UsrMnuitem.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrNum.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrNum.resx"
+                    DependentUpon = "UsrNum.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrOpt.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrOpt.resx"
+                    DependentUpon = "UsrOpt.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrTab.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrTab.resx"
+                    DependentUpon = "UsrTab.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrTenKey.vb"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrTenKey.resx"
+                    DependentUpon = "UsrTenKey.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrTime.vb"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrTime.resx"
+                    DependentUpon = "UsrTime.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UsrTxt.vb"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UsrTxt.resx"
+                    DependentUpon = "UsrTxt.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+            </Include>
+        </Files>
+    </VisualBasic>
+</VisualStudioProject>
+
