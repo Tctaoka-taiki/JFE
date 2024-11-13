@@ -6,7 +6,6 @@ Imports System.Collections
 Public Class レーザー距離計距離計測システム
 
     Public Shared objMutex As System.Threading.Mutex
-
     ''制御用変数 ------------------------------------------------------------------------------------------------------
 
     ''機器ID　（各変数のキー情報の参照に用いる）
@@ -187,6 +186,10 @@ Public Class レーザー距離計距離計測システム
             ''待機(default:2000)
             System.Threading.Thread.Sleep(Me.mReIntvl_CheckDevice)
         Next
+        '田岡削除予定
+        'rtnbln = True
+        '----------------
+
 
         ''表示
         If rtnbln Then

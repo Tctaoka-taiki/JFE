@@ -235,11 +235,9 @@ Module MFile
     '---------------------------------------------------------------------------
 #End Region
     Public Function gStrFileGet(ByVal strPath As String) As String()
-
         Dim files As String() = System.IO.Directory.GetFiles(strPath, "*", SearchOption.AllDirectories)
 
         Return files
-
     End Function
 
 End Module

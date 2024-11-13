@@ -19,94 +19,95 @@ Partial Class レーザー距離計距離計測システム
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.Lbl_CapX軸 = New System.Windows.Forms.Label
-        Me.Lbl_DataX軸 = New System.Windows.Forms.Label
-        Me.Lbl_CapY軸 = New System.Windows.Forms.Label
-        Me.Lbl_DataY軸 = New System.Windows.Forms.Label
-        Me.Lbl_CapZ軸 = New System.Windows.Forms.Label
-        Me.Lbl_DataZ軸 = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Lbltest_TNG = New System.Windows.Forms.Label
-        Me.Lbltest_POW = New System.Windows.Forms.Label
-        Me.Lbltest_C_TNG = New System.Windows.Forms.Label
-        Me.Lbltest_C_POW = New System.Windows.Forms.Label
-        Me.Lbltest_P_TNG = New System.Windows.Forms.Label
-        Me.Lbltest_P_POW = New System.Windows.Forms.Label
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.lbl_Data計測時刻 = New System.Windows.Forms.Label
-        Me.lblDataトングSTS = New System.Windows.Forms.Label
-        Me.lbl_Capファイル名 = New System.Windows.Forms.Label
-        Me.lblCap計測履歴 = New System.Windows.Forms.Label
-        Me.lbl_Cap計測時刻 = New System.Windows.Forms.Label
-        Me.txt計測履歴 = New System.Windows.Forms.TextBox
-        Me.lbl_Dataファイル名 = New System.Windows.Forms.Label
-        Me.lblCapトングSTS = New System.Windows.Forms.Label
-        Me.btn終了 = New System.Windows.Forms.Button
-        Me.StatusStrip = New System.Windows.Forms.StatusStrip
-        Me.SLblシステム状態 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.Slbl現在時刻 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.txt機器状況 = New System.Windows.Forms.TextBox
-        Me.btn機器チェック = New System.Windows.Forms.Button
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.lblD入力トングSTS = New System.Windows.Forms.Label
-        Me.lblD入力電源 = New System.Windows.Forms.Label
-        Me.lblDataRKZ = New System.Windows.Forms.Label
-        Me.lblDataRKY = New System.Windows.Forms.Label
-        Me.lblDataRKX = New System.Windows.Forms.Label
-        Me.lblDataX軸CHK = New System.Windows.Forms.Label
-        Me.lblData入力トングSTS = New System.Windows.Forms.Label
-        Me.lblCapX軸CHK = New System.Windows.Forms.Label
-        Me.lblData入力電源 = New System.Windows.Forms.Label
-        Me.lblCapY軸CHK = New System.Windows.Forms.Label
-        Me.lblDataZ軸CHK = New System.Windows.Forms.Label
-        Me.lblCapZ軸CHK = New System.Windows.Forms.Label
-        Me.lblCapInCHK = New System.Windows.Forms.Label
-        Me.lblDataY軸CHK = New System.Windows.Forms.Label
-        Me.Grp機器接続 = New System.Windows.Forms.GroupBox
-        Me.lbl接続CHKX = New System.Windows.Forms.Label
-        Me.LblCOMCHKD1 = New System.Windows.Forms.Label
-        Me.lbl接続CHKD1 = New System.Windows.Forms.Label
-        Me.LblCOMCHKZ = New System.Windows.Forms.Label
-        Me.LblCOMCHKY = New System.Windows.Forms.Label
-        Me.lbl接続CHKZ = New System.Windows.Forms.Label
-        Me.LblCOMCHKX = New System.Windows.Forms.Label
-        Me.lbl接続CHKY = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lbl接続CHKST1_Y = New System.Windows.Forms.Label
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.Label24 = New System.Windows.Forms.Label
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.Label26 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.lbl接続CHKST1_X = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.lbl接続CHKST2_Z = New System.Windows.Forms.Label
-        Me.lbl接続CHKST2_D1 = New System.Windows.Forms.Label
-        Me.lblCaption = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.Lbl_CapX軸 = New System.Windows.Forms.Label()
+        Me.Lbl_DataX軸 = New System.Windows.Forms.Label()
+        Me.Lbl_CapY軸 = New System.Windows.Forms.Label()
+        Me.Lbl_DataY軸 = New System.Windows.Forms.Label()
+        Me.Lbl_CapZ軸 = New System.Windows.Forms.Label()
+        Me.Lbl_DataZ軸 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Lbltest_TNG = New System.Windows.Forms.Label()
+        Me.Lbltest_POW = New System.Windows.Forms.Label()
+        Me.Lbltest_C_TNG = New System.Windows.Forms.Label()
+        Me.Lbltest_C_POW = New System.Windows.Forms.Label()
+        Me.Lbltest_P_TNG = New System.Windows.Forms.Label()
+        Me.Lbltest_P_POW = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.lbl_Data計測時刻 = New System.Windows.Forms.Label()
+        Me.lblDataトングSTS = New System.Windows.Forms.Label()
+        Me.lbl_Capファイル名 = New System.Windows.Forms.Label()
+        Me.lblCap計測履歴 = New System.Windows.Forms.Label()
+        Me.lbl_Cap計測時刻 = New System.Windows.Forms.Label()
+        Me.txt計測履歴 = New System.Windows.Forms.TextBox()
+        Me.lbl_Dataファイル名 = New System.Windows.Forms.Label()
+        Me.lblCapトングSTS = New System.Windows.Forms.Label()
+        Me.btn終了 = New System.Windows.Forms.Button()
+        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
+        Me.SLblシステム状態 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Slbl現在時刻 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.txt機器状況 = New System.Windows.Forms.TextBox()
+        Me.btn機器チェック = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lblD入力トングSTS = New System.Windows.Forms.Label()
+        Me.lblD入力電源 = New System.Windows.Forms.Label()
+        Me.lblDataRKZ = New System.Windows.Forms.Label()
+        Me.lblDataRKY = New System.Windows.Forms.Label()
+        Me.lblDataRKX = New System.Windows.Forms.Label()
+        Me.lblDataX軸CHK = New System.Windows.Forms.Label()
+        Me.lblData入力トングSTS = New System.Windows.Forms.Label()
+        Me.lblCapX軸CHK = New System.Windows.Forms.Label()
+        Me.lblData入力電源 = New System.Windows.Forms.Label()
+        Me.lblCapY軸CHK = New System.Windows.Forms.Label()
+        Me.lblDataZ軸CHK = New System.Windows.Forms.Label()
+        Me.lblCapZ軸CHK = New System.Windows.Forms.Label()
+        Me.lblCapInCHK = New System.Windows.Forms.Label()
+        Me.lblDataY軸CHK = New System.Windows.Forms.Label()
+        Me.Grp機器接続 = New System.Windows.Forms.GroupBox()
+        Me.lbl接続CHKX = New System.Windows.Forms.Label()
+        Me.LblCOMCHKD1 = New System.Windows.Forms.Label()
+        Me.lbl接続CHKD1 = New System.Windows.Forms.Label()
+        Me.LblCOMCHKZ = New System.Windows.Forms.Label()
+        Me.LblCOMCHKY = New System.Windows.Forms.Label()
+        Me.lbl接続CHKZ = New System.Windows.Forms.Label()
+        Me.LblCOMCHKX = New System.Windows.Forms.Label()
+        Me.lbl接続CHKY = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lbl接続CHKST1_Y = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.lbl接続CHKST1_X = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lbl接続CHKST2_Z = New System.Windows.Forms.Label()
+        Me.lbl接続CHKST2_D1 = New System.Windows.Forms.Label()
+        Me.lblCaption = New System.Windows.Forms.Label()
         Me.tmrNow = New System.Windows.Forms.Timer(Me.components)
         Me.tmr7 = New System.Windows.Forms.Timer(Me.components)
+        Me.AComCtl = New System.IO.Ports.SerialPort(Me.components)
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -474,10 +475,10 @@ Partial Class レーザー距離計距離計測システム
         'StatusStrip
         '
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SLblシステム状態, Me.Slbl現在時刻})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 684)
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 682)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.StatusStrip.Size = New System.Drawing.Size(1016, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(1016, 24)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip1"
         '
@@ -485,7 +486,7 @@ Partial Class レーザー距離計距離計測システム
         '
         Me.SLblシステム状態.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
         Me.SLblシステム状態.Name = "SLblシステム状態"
-        Me.SLblシステム状態.Size = New System.Drawing.Size(53, 17)
+        Me.SLblシステム状態.Size = New System.Drawing.Size(55, 19)
         Me.SLblシステム状態.Text = "オンライン"
         '
         'Slbl現在時刻
@@ -493,7 +494,7 @@ Partial Class レーザー距離計距離計測システム
         Me.Slbl現在時刻.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
         Me.Slbl現在時刻.Name = "Slbl現在時刻"
         Me.Slbl現在時刻.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Slbl現在時刻.Size = New System.Drawing.Size(165, 17)
+        Me.Slbl現在時刻.Size = New System.Drawing.Size(172, 19)
         Me.Slbl現在時刻.Text = "YYYY/MM/DD(DDD) HH:MI:SS"
         Me.Slbl現在時刻.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -1331,4 +1332,5 @@ Partial Class レーザー距離計距離計測システム
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents AComCtl As IO.Ports.SerialPort
 End Class
