@@ -1,0 +1,6 @@
+.vs/
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
