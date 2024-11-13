@@ -6,7 +6,10 @@ Imports MSCommLib.OnCommConstants
 Public MustInherit Class AComCtl
 
     'シリアル通信クラス
-    Friend WithEvents mMSComm As MSComm
+    '2024/10 田岡　MsCommからSerialPortに変更
+    Friend WithEvents mMSComm As SerialPort
+    'Friend WithEvents mMSComm As MSComm
+    '------------------------------------------
 
     Private mHst_Parity As New Collections.Hashtable
     Private mHst_StopBits As New Collections.Hashtable
@@ -22,10 +25,14 @@ Public MustInherit Class AComCtl
     ''' <param name="dataBits">データビット</param>
     ''' <param name="stopBits">ストップビット</param>
     ''' <remarks></remarks>
-    Public Sub New(Optional ByVal PortNumber As Short = 1, Optional ByVal baudRate As Integer = 9600, _
-        Optional ByVal parity As Parity = Parity.None, Optional ByVal dataBits As Integer = 8, _
+    '2024/10 田岡　PortNumberのデータ型、値を変更
+    Public Sub New(Optional ByVal PortNumber As String = "COM1", Optional ByVal baudRate As Integer = 9600,
+        Optional ByVal parity As Parity = Parity.None, Optional ByVal dataBits As Integer = 8,
         Optional ByVal stopBits As StopBits = StopBits.One)
-
+        'Public Sub New(Optional ByVal PortNumber As Short = 1, Optional ByVal baudRate As Integer = 9600, _
+        'Optional ByVal parity As Parity = Parity.None, Optional ByVal dataBits As Integer = 8, _
+        'Optional ByVal stopBits As StopBits = StopBits.One)
+        '---------------------------------------------------------------------------------------------------------------
         'パリティビット対応テーブル
         mHst_Parity.Add(System.IO.Ports.Parity.Even, "E")
         mHst_Parity.Add(System.IO.Ports.Parity.Mark, "M")
@@ -34,20 +41,29 @@ Public MustInherit Class AComCtl
         mHst_Parity.Add(System.IO.Ports.Parity.Space, "S")
 
         'パリティビット対応テーブル
-        mHst_StopBits.Add(stopBits.One, "1")
-        mHst_StopBits.Add(stopBits.OnePointFive, "1.5")
-        mHst_StopBits.Add(stopBits.Two, "2")
+        mHst_StopBits.Add(StopBits.One, "1")
+        mHst_StopBits.Add(StopBits.OnePointFive, "1.5")
+        mHst_StopBits.Add(StopBits.Two, "2")
 
         'シリアル通信用クラス作成
-        Me.mMSComm = New MSComm
-
         '使用シリアルポート番号を指定
-        Me.mMSComm.CommPort = PortNumber
-
         '接続設定
-        Me.mMSComm.Settings = CStr(baudRate) & "," & CStr(Me.mHst_Parity(parity)) _
-                & "," & CStr(dataBits) & CStr(Me.mHst_StopBits(stopBits))
-
+        '2024/10 田岡　プロパティをSerialPort用に変更
+        Me.mMSComm = New SerialPort With {
+            .PortName = "COM1",
+            .BaudRate = baudRate,
+            .Parity = parity,
+            .DataBits = dataBits,
+            .StopBits = stopBits
+        }
+        'シリアル通信用クラス作成
+        'Me.mMSComm = New MSComm
+        '使用シリアルポート番号を指定
+        'Me.mMSComm.CommPort = PortNumber
+        '接続設定
+        'Me.mMSComm.Settings = CStr(baudRate) & "," & CStr(Me.mHst_Parity(parity)) _
+        '& "," & CStr(dataBits) & CStr(Me.mHst_StopBits(stopBits))
+        '----------------------------------------------------------------
     End Sub
 
     ''' <summary>
@@ -60,10 +76,15 @@ Public MustInherit Class AComCtl
     ''' <remarks></remarks>
     Public Function PortOpen() As Boolean
         Try
-            If Not Me.mMSComm.PortOpen Then
+            '2024/10 田岡　プロパティをSerialPort用に変更
+            If Not Me.mMSComm.IsOpen Then
+                'If Not Me.mMSComm.PortOpen Then
+                '-----------------------------------------
                 '新しいシリアルポート接続を開く
-                Me.mMSComm.PortOpen = True
-
+                '2024/10 田岡　OpenをSerialPort用に変更
+                Me.mMSComm.Open()
+                'Me.mMSComm.PortOpen = True
+                '---------------------------------------
                 Return True
             End If
 
@@ -86,18 +107,26 @@ Public MustInherit Class AComCtl
 
         Try
             'シリアルポートを閉じる
-            Me.mMSComm.PortOpen = False
+            '2024/10 田岡　CloseをSerialPort用に変更
+            Me.mMSComm.Close()
+            ' Me.mMSComm.PortOpen = False
+            '----------------------------------------
 
             '新しいシリアルポート接続を開く
-            Me.mMSComm.PortOpen = True
-
+            '2024/10 田岡　OpenをSerialPort用に変更
+            Me.mMSComm.Open()
+            'Me.mMSComm.PortOpen = True
+            '---------------------------------------
             Return True
         Catch ex As Runtime.InteropServices.COMException
             Me.intCOMErrCode = ex.ErrorCode
             COMERR.GetErrorComment(ex.ErrorCode)
             Try
                 '新しいシリアルポート接続を開く
-                Me.mMSComm.PortOpen = True
+                '2024/10 田岡　OpenをSerialPort用に変更
+                Me.mMSComm.Open()
+                'Me.mMSComm.PortOpen = True
+                '----------------------------------------
 
                 Return True
             Catch ex2 As Runtime.InteropServices.COMException
@@ -117,9 +146,16 @@ Public MustInherit Class AComCtl
     ''' <remarks></remarks>
     Public Function PortClose() As Boolean
         Try
-            If Me.mMSComm.PortOpen Then
+            '2024/10 田岡　プロパティをSerialPort用に変更
+            If Me.mMSComm.IsOpen Then
+                'If Me.mMSComm.PortOpen Then
+                '-----------------------------------------
+
                 'シリアルポートを閉じる
-                Me.mMSComm.PortOpen = False
+                '2024/10 田岡　CloseをSerialPort用に変更
+                Me.mMSComm.Close()
+                'Me.mMSComm.PortOpen = False
+                '-----------------------------------------
 
                 Return True
             End If
@@ -259,11 +295,59 @@ Public MustInherit Class AComCtl
     ''' COM通信エラー／通信イベント生リスナ
     ''' </summary>
     ''' <remarks></remarks>
-    Public Overridable Sub mMSComm_OnComm() Handles mMSComm.OnComm
-        Select Case Me.mMSComm.CommEvent
-            Case comEventBreak
+    '2024/10 田岡
+    Public Overridable Sub mMSComm_OnComm(sender As Object, e As SerialDataReceivedEventArgs) Handles mMSComm.DataReceived
+        Select Case e.EventType
+            Case SerialData.Chars
+                '文字が受信され、入力バッファーに格納
+                Me.EOFEventListener()
+            Case SerialData.Eof
+                'EOF文字を受信
+                Me.EOFEventListener()
+        End Select
+    End Sub
+    Public Overridable Sub mMSComm_OnComm(sender As Object, e As SerialErrorReceivedEventArgs) Handles mMSComm.ErrorReceived
+        Select Case e.EventType
+            Case SerialError.Frame
+                'フレームエラー
+                Me.FrameErrorErrorListener()
+            Case SerialError.Overrun
+                'ポートオーバーラン
+                Me.PortOverRunErrorListener()
+            Case SerialError.RXOver
+                '受信バッファオーバーフロー
+                Me.RxOverErrorListener()
+            Case SerialError.RXParity
+                'パリティエラー
+                Me.RxParityErrorListener()
+            Case SerialError.TXFull
+                '送信バッファ
+                Me.TxFullErrorListener()
+        End Select
+    End Sub
+
+    Public Overridable Sub mMSComm_OnComm(sender As Object, e As SerialPinChangedEventArgs) Handles mMSComm.PinChanged
+        Select Case e.EventType
+            Case SerialPinChange.Break
                 '中断信号を受信
                 Me.BreakErrorListener()
+            Case SerialPinChange.CtsChanged
+                'CTSラインの状態が変化
+                Me.CTSEventListener()
+            Case SerialPinChange.DsrChanged
+                'DSRラインの状態が変化
+                Me.DSREventListener()
+            Case SerialPinChange.CDChanged
+                'CDラインの状態が変化
+                Me.CDEventListener()
+            Case SerialPinChange.Ring
+                'リングが検出
+                Me.RingEventListener()
+        End Select
+    End Sub
+
+    Public Overridable Sub mMSComm_OnComm(sender As Object, e As SerialPort) Handles mMSComm.Disposed
+        Select Case e.EventType
             Case comEventCTSTO
                 'CTSタイムアウト
                 Me.CTSTimeOutErrorListener()
@@ -273,48 +357,71 @@ Public MustInherit Class AComCtl
             Case comEventCDTO
                 'CDタイムアウト
                 Me.CDTimeOutErrorListener()
-            Case comEventFrame
-                'フレームエラー
-                Me.FrameErrorErrorListener()
-            Case comEventOverrun
-                'ポートオーバーラン
-                Me.PortOverRunErrorListener()
-            Case comEventRxOver
-                '受信バッファオーバーフロー
-                Me.RxOverErrorListener()
-            Case comEventRxParity
-                'パリティエラー
-                Me.RxParityErrorListener()
-            Case comEventTxFull
-                '送信バッファ
-                Me.TxFullErrorListener()
             Case comEventDCB
                 'デバイスコントロールブロックエラー
                 Me.DCBErrorListener()
             Case comEvSend
                 '送信イベントリスナ
                 Me.SendEventListener()
-            Case comEvReceive
-                '受信イベントリスナ
-                Me.ReceiveEventListener()
-            Case comEvCTS
-                'CTSラインの状態が変化
-                Me.CTSEventListener()
-            Case comEvDSR
-                'DSRラインの状態が変化
-                Me.DSREventListener()
-            Case comEvCD
-                'CDラインの状態が変化
-                Me.CDEventListener()
-            Case comEvRing
-                'リングが検出
-                Me.RingEventListener()
-            Case comEvEOF
-                'EOF文字を受信
-                Me.EOFEventListener()
         End Select
     End Sub
 
+    'Public Overridable Sub mMSComm_OnComm() Handles mMSComm.OnComm
+    '    Select Case Me.mMSComm.CommEvent
+    '        Case comEventBreak
+    '            '中断信号を受信
+    '            Me.BreakErrorListener()
+    '        Case comEventCTSTO
+    '            'CTSタイムアウト
+    '            Me.CTSTimeOutErrorListener()
+    '        Case comEventDSRTO
+    '            'DSRタイムアウト
+    '            Me.DSRTimeOutErrorListener()
+    '        Case comEventCDTO
+    '            'CDタイムアウト
+    '            Me.CDTimeOutErrorListener()
+    '        Case comEventFrame
+    '            'フレームエラー
+    '            Me.FrameErrorErrorListener()
+    '        Case comEventOverrun
+    '            'ポートオーバーラン
+    '            Me.PortOverRunErrorListener()
+    '        Case comEventRxOver
+    '            '受信バッファオーバーフロー
+    '            Me.RxOverErrorListener()
+    '        Case comEventRxParity
+    '            'パリティエラー
+    '            Me.RxParityErrorListener()
+    '        Case comEventTxFull
+    '            '送信バッファ
+    '            Me.TxFullErrorListener()
+    '        Case comEventDCB
+    '            'デバイスコントロールブロックエラー
+    '            Me.DCBErrorListener()
+    '        Case comEvSend
+    '            '送信イベントリスナ
+    '            Me.SendEventListener()
+    '        Case comEvReceive
+    '            '受信イベントリスナ
+    '            Me.ReceiveEventListener()
+    '        Case comEvCTS
+    '            'CTSラインの状態が変化
+    '            Me.CTSEventListener()
+    '        Case comEvDSR
+    '            'DSRラインの状態が変化
+    '            Me.DSREventListener()
+    '        Case comEvCD
+    '            'CDラインの状態が変化
+    '            Me.CDEventListener()
+    '        Case comEvRing
+    '            'リングが検出
+    '            Me.RingEventListener()
+    '        Case comEvEOF
+    '            'EOF文字を受信
+    '            Me.EOFEventListener()
+    '    End Select
+    'End Sub
+    '------------------------------------------------------------------------------------
     Private Class COMERR
         Public Shared Function GetErrorComment(ByVal ErrorCode As Integer) As String
             Dim strRet As String = ""

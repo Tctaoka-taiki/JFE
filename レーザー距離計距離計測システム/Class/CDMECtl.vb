@@ -24,24 +24,34 @@ Public Class CDMECtl : Inherits AComCtl
     ''' <param name="dataBits">データビット</param>
     ''' <param name="stopBits">ストップビット</param>
     ''' <remarks></remarks>
-    Public Sub New(Optional ByVal PortNumber As Short = 1, Optional ByVal baudRate As Integer = 9600, _
-        Optional ByVal parity As Parity = Parity.None, Optional ByVal dataBits As Integer = 8, _
+    '2024/10 田岡　PortNumberのデータ型と値をSerialPort用に変更
+    Public Sub New(Optional ByVal PortNumber As String = "COM1", Optional ByVal baudRate As Integer = 9600,
+        Optional ByVal parity As Parity = Parity.None, Optional ByVal dataBits As Integer = 8,
         Optional ByVal stopBits As StopBits = StopBits.One)
+        'Public Sub New(Optional ByVal PortNumber As Short = 1, Optional ByVal baudRate As Integer = 9600, _
+        'Optional ByVal parity As Parity = Parity.None, Optional ByVal dataBits As Integer = 8, _
+        'Optional ByVal stopBits As StopBits = StopBits.One)
+        '----------------------------------------------------------
 
         MyBase.New(PortNumber, baudRate, parity, dataBits, stopBits)
+        '2024/10 田岡　プロパティをSerialPort用に変更
+        Me.mMSComm.Handshake = Handshake.None
+        'Me.mMSComm.Handshaking = HandshakeConstants.comNone
+        '----------------------------------------------------------
 
-        Me.mMSComm.Handshaking = HandshakeConstants.comNone
+        Me.mMSComm.RtsEnable = False
 
-        Me.mMSComm.RTSEnable = False
-
-        'データ受信時にOnCommイベントを発生させる閾値のバイト数を指定
-        Me.mMSComm.RThreshold = 1
-
-        'データ送信時にOnCommイベントを発生させる閾値のバイト数を指定
-        Me.mMSComm.SThreshold = 1
+        ''データ受信時にOnCommイベントを発生させる閾値のバイト数を指定
+        ''2024/10 田岡　置き換え先プロパティがないため一旦コメントアウト
+        'Me.mMSComm.RThreshold = 1
+        '----------------------------------------------------------------
+        ''2024/10 田岡　置き換え先プロパティがないため一旦コメントアウト
+        ''データ送信時にOnCommイベントを発生させる閾値のバイト数を指定
+        'Me.mMSComm.SThreshold = 1
+        '----------------------------------------------------------------
 
         'シリアル通信中に、DTR(Data Terminal Ready）シグナルを有効にする
-        Me.mMSComm.DTREnable = True
+        Me.mMSComm.DtrEnable = True
 
     End Sub
 
@@ -51,9 +61,16 @@ Public Class CDMECtl : Inherits AComCtl
     ''' <remarks>距離を単発測定します。</remarks>
     Public Sub Command_DISTANCE()
         Try
-            If Not Me.mMSComm.PortOpen Then
+            '2024/10 田岡　プロパティをSerialPort用に変更
+            If Not Me.mMSComm.IsOpen Then
+                'If Not Me.mMSComm.PortOpen Then
+                '----------------------------------------
+
                 '新しいシリアルポート接続を開く
-                Me.mMSComm.PortOpen = True
+                '2024/10 田岡　OpenをSerialPort用に変更
+                Me.mMSComm.Open()
+                'Me.mMSComm.PortOpen = True               '
+                '-----------------------------------------
             End If
 
             'タイムアウトカウントが５回以上なら
@@ -68,7 +85,10 @@ Public Class CDMECtl : Inherits AComCtl
             End If
 
             'コマンドシーケンス送信
-            Me.mMSComm.Output = ControlChar.STX & "TSM" & ControlChar.EOT & vbCrLf
+            '2024/10 田岡　WriteをSerialPort用に変更
+            Me.mMSComm.Write(ControlChar.STX & "0122" & ControlChar.EOT & vbCrLf)
+            'Me.mMSComm.Output = ControlChar.STX & "TSM" & ControlChar.EOT & vbCrLf
+            '---------------------------------------------------------------------
 
         Catch ex As InvalidOperationException
             Common.gMsg_警告("指定したポートが開いていません" & vbCrLf & ex.ToString)
@@ -84,7 +104,10 @@ Public Class CDMECtl : Inherits AComCtl
     Public Sub Command_TRACKING()
         Try
             'コマンドシーケンス送信
-            Me.mMSComm.Output = ControlChar.STX & "ICM0" & ControlChar.EOT & vbCrLf
+            '2024/10 田岡　WriteをSerialPort用に変更
+            Me.mMSComm.Write(ControlChar.STX & "052201" & ControlChar.EOT & vbCrLf)
+            'Me.mMSComm.Output = ControlChar.STX & "ICM0" & ControlChar.EOT & vbCrLf
+            '------------------------------------------------------------------------
 
         Catch ex As InvalidOperationException
             Common.gMsg_警告("指定したポートが開いていません" & vbCrLf & ex.ToString)
@@ -103,7 +126,10 @@ Public Class CDMECtl : Inherits AComCtl
         Dim intRet As Integer = -1
         Try
             'コマンドシーケンス送信
-            Me.mMSComm.Output = ControlChar.STX & "GTE" & ControlChar.EOT & vbCrLf
+            '2024/10 田岡　WriteをSerialPort用に変更
+            Me.mMSComm.Write(ControlChar.STX & "0126" & ControlChar.EOT & vbCrLf)
+            'Me.mMSComm.Output = ControlChar.STX & "GTE" & ControlChar.EOT & vbCrLf
+            '-----------------------------------------------------------------------
 
         Catch ex As InvalidOperationException
             Common.gMsg_警告("指定したポートが開いていません" & vbCrLf & ex.ToString)
@@ -119,7 +145,10 @@ Public Class CDMECtl : Inherits AComCtl
     Public Sub Command_LASER_ON()
         Try
             'コマンドシーケンス送信
-            Me.mMSComm.Output = ControlChar.STX & "ISB0" & ControlChar.EOT & vbCrLf
+            '2024/10 田岡　WriteをSerialPort用に変更
+            Me.mMSComm.Write(ControlChar.STX & "0332" & ControlChar.EOT & vbCrLf)
+            'Me.mMSComm.Output = ControlChar.STX & "ISB0" & ControlChar.EOT & vbCrLf
+            '--------------------------------------------------------------------------
 
         Catch ex As InvalidOperationException
             Common.gMsg_警告("指定したポートが開いていません" & vbCrLf & ex.ToString)
@@ -135,7 +164,10 @@ Public Class CDMECtl : Inherits AComCtl
     Public Sub Command_LASER_OFF()
         Try
             'コマンドシーケンス送信
-            Me.mMSComm.Output = ControlChar.STX & "ISB1" & ControlChar.EOT & vbCrLf
+            '2024/10 田岡　WriteをSerialPort用に変更
+            Me.mMSComm.Write(ControlChar.STX & "0333" & ControlChar.EOT & vbCrLf)
+            'Me.mMSComm.Output = ControlChar.STX & "ISB1" & ControlChar.EOT & vbCrLf
+            '------------------------------------------------------------------------
 
         Catch ex As InvalidOperationException
             Common.gMsg_警告("指定したポートが開いていません" & vbCrLf & ex.ToString)
@@ -176,7 +208,10 @@ Public Class CDMECtl : Inherits AComCtl
 
         ''COMデータ受信（リトライ５回）
         For i As Integer = 0 To 4
-            strRead = CStr(Me.mMSComm.Input)
+            '2024/10 田岡　ReadExisting()に変更
+            strRead = CStr(Me.mMSComm.ReadExisting())
+            'strRead = CStr(Me.mMSComm.Input)
+            '----------------------------------------
             If Not strRead Is Nothing Then
                 Exit For
             End If
@@ -199,12 +234,21 @@ Public Class CDMECtl : Inherits AComCtl
         '        Exit For
         '    End If
         'Next
+
+        '2024/10 田岡　受信バイトが6文字から7文字に変更のため切り出し文字を1増加(符号込みのため8)
         For i As Integer = strRead.ToCharArray.Length - 1 To 0 Step -1
             If strRead.ToCharArray(i, 1) = "+" Or strRead.ToCharArray(i, 1) = "-" Then
-                intRead = CInt(strRead.Substring(i, 7))
+                intRead = CInt(strRead.Substring(i, 8))
                 Exit For
             End If
         Next
+        'For i As Integer = strRead.ToCharArray.Length - 1 To 0 Step -1
+        'If strRead.ToCharArray(i, 1) = "+" Or strRead.ToCharArray(i, 1) = "-" Then
+        'intRead = CInt(strRead.Substring(i, 7))
+        'Exit For
+        'End If
+        'Next
+        '------------------------------------------------------------------------
 
         '測定値反転
         intRead = intRead
@@ -217,7 +261,6 @@ Public Class CDMECtl : Inherits AComCtl
             '-の場合、+に変換
             intRead = intRead * -1
         End If
-
 
         '最大値(999999)上限設定
         If intRead > 999999 Then
