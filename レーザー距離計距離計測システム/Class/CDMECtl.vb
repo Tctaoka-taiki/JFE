@@ -238,8 +238,13 @@ Public Class CDMECtl : Inherits AComCtl
         '2024/10 田岡　受信バイトが6文字から7文字に変更のため切り出し文字を1増加(符号込みのため8)
         For i As Integer = strRead.ToCharArray.Length - 1 To 0 Step -1
             If strRead.ToCharArray(i, 1) = "+" Or strRead.ToCharArray(i, 1) = "-" Then
-                intRead = CInt(strRead.Substring(i, 8))
-                Exit For
+                Try
+                    intRead = CInt(strRead.Substring(i, 8))
+                    Exit For
+                Catch
+                    intRead = 0
+                    Exit For
+                End Try
             End If
         Next
         'For i As Integer = strRead.ToCharArray.Length - 1 To 0 Step -1

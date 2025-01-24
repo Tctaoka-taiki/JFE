@@ -346,25 +346,25 @@ Public MustInherit Class AComCtl
         End Select
     End Sub
 
-    Public Overridable Sub mMSComm_OnComm(sender As Object, e As SerialPort) Handles mMSComm.Disposed
-        Select Case e.EventType
-            Case comEventCTSTO
-                'CTSタイムアウト
-                Me.CTSTimeOutErrorListener()
-            Case comEventDSRTO
-                'DSRタイムアウト
-                Me.DSRTimeOutErrorListener()
-            Case comEventCDTO
-                'CDタイムアウト
-                Me.CDTimeOutErrorListener()
-            Case comEventDCB
-                'デバイスコントロールブロックエラー
-                Me.DCBErrorListener()
-            Case comEvSend
-                '送信イベントリスナ
-                Me.SendEventListener()
-        End Select
-    End Sub
+    'Public Overridable Sub mMSComm_OnComm(sender As Object, e As SerialPort) Handles mMSComm.Disposed
+    '    Select Case e.EventType
+    '        Case comEventCTSTO
+    '            'CTSタイムアウト
+    '            Me.CTSTimeOutErrorListener()
+    '        Case comEventDSRTO
+    '            'DSRタイムアウト
+    '            Me.DSRTimeOutErrorListener()
+    '        Case comEventCDTO
+    '            'CDタイムアウト
+    '            Me.CDTimeOutErrorListener()
+    '        Case comEventDCB
+    '            'デバイスコントロールブロックエラー
+    '            Me.DCBErrorListener()
+    '        Case comEvSend
+    '            '送信イベントリスナ
+    '            Me.SendEventListener()
+    '    End Select
+    'End Sub
 
     'Public Overridable Sub mMSComm_OnComm() Handles mMSComm.OnComm
     '    Select Case Me.mMSComm.CommEvent
